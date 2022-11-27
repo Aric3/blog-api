@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author chenaolin
  */
 @SpringBootApplication
-@MapperScan("org.akboom.blogapi.mapper")
+@MapperScan("org.akboom.blogapi.dao.mapper")
 public class BlogApiApplication {
 
     public static void main(String[] args) {

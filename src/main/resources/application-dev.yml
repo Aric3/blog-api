@@ -9,9 +9,11 @@ spring:
 
 server:
   port: 8888
+  servlet:
+    context-path: /blogapi/v1
 mybatis:
-  mapper-locations: classpath:org/akboom/blogapi/mapper/*.xml
-  type-aliases-package: org.akboom.entity  # 注意：对应实体类的路径
+  mapper-locations: classpath:org/akboom/blogapi/dao/mapper/*.xml
+  type-aliases-package: org.akboom.blogapi.dao.pojo
   configuration:
     #org.apache.ibatis.logging.stdout.StdOutImpl 控制台打印sql语句方便调试sql语句执行错误
     #org.apache.ibatis.logging.log4j2.Log4j2Impl:这个不在控制台打印查询结果,但是在log4j中打印
@@ -23,4 +25,4 @@ logging:
   config: classpath:log4j2-dev.xml
   level:
     #这个指定dao层，也就是mapper文件的所在包
-    org.akboom.blogapi.org.akboom.blogapi.mapper: DEBUG
+    org.akboom.blogapi.org.akboom.blogapi.dao.mapper: DEBUG

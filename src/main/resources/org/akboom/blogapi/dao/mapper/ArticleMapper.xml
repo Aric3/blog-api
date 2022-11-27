@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.akboom.blogapi.dao.mapper.ArticleMapper">
+
+    <select id="selectArticleByPageParam" resultType="Article">
+        select *
+        from article
+        order by weight desc, create_date desc
+        <if test="offset != null and pageSize != null">
+        limit #{offset}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="selectArticleCount"  resultType="Article">
+        select
+        count(*)
+        from article
+    </select>
+</mapper>

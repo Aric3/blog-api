@@ -1,6 +1,6 @@
 package org.akboom.blogapi;
 
-import org.akboom.blogapi.mapper.UserMapper;
+import org.akboom.blogapi.dao.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

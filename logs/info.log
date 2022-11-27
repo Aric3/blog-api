@@ -29,3 +29,34 @@
 16:35:51.423 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
 16:35:51.514 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 16:35:51.520 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+22:37:23.113 [main] INFO  org.akboom.blogapi.BlogApiApplicationTests - Starting BlogApiApplicationTests using Java 1.8.0_341 on LAPTOP-HS8QAR35 with PID 36344 (started by 61450 in D:\CALCoding\Spring_Project\FinalProject\blog-api)
+22:37:23.125 [main] INFO  org.akboom.blogapi.BlogApiApplicationTests - The following 1 profile is active: "dev"
+22:39:34.675 [main] INFO  org.akboom.blogapi.BlogApiApplication - Starting BlogApiApplication using Java 1.8.0_341 on LAPTOP-HS8QAR35 with PID 25376 (D:\CALCoding\Spring_Project\FinalProject\blog-api\target\classes started by 61450 in D:\CALCoding\Spring_Project\FinalProject\blog-api)
+22:39:34.691 [main] INFO  org.akboom.blogapi.BlogApiApplication - The following 1 profile is active: "dev"
+22:39:35.723 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:39:35.723 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:39:35.723 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+22:39:35.894 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:39:35.957 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+22:41:19.098 [main] INFO  org.akboom.blogapi.BlogApiApplication - Starting BlogApiApplication using Java 1.8.0_341 on LAPTOP-HS8QAR35 with PID 17312 (D:\CALCoding\Spring_Project\FinalProject\blog-api\target\classes started by 61450 in D:\CALCoding\Spring_Project\FinalProject\blog-api)
+22:41:19.098 [main] INFO  org.akboom.blogapi.BlogApiApplication - The following 1 profile is active: "dev"
+22:41:19.896 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:41:19.896 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:41:19.896 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+22:41:20.052 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:41:20.303 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+22:43:40.650 [main] INFO  org.akboom.blogapi.BlogApiApplication - Starting BlogApiApplication using Java 1.8.0_341 on LAPTOP-HS8QAR35 with PID 15544 (D:\CALCoding\Spring_Project\FinalProject\blog-api\target\classes started by 61450 in D:\CALCoding\Spring_Project\FinalProject\blog-api)
+22:43:40.660 [main] INFO  org.akboom.blogapi.BlogApiApplication - The following 1 profile is active: "dev"
+22:43:41.498 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:43:41.498 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:43:41.498 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+22:43:41.691 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:43:41.944 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+22:44:29.241 [main] INFO  org.akboom.blogapi.BlogApiApplication - Starting BlogApiApplication using Java 1.8.0_341 on LAPTOP-HS8QAR35 with PID 34004 (D:\CALCoding\Spring_Project\FinalProject\blog-api\target\classes started by 61450 in D:\CALCoding\Spring_Project\FinalProject\blog-api)
+22:44:29.241 [main] INFO  org.akboom.blogapi.BlogApiApplication - The following 1 profile is active: "dev"
+22:44:30.180 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+22:44:30.180 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:44:30.180 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
+22:44:30.336 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:44:30.916 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+22:44:30.947 [main] INFO  org.akboom.blogapi.BlogApiApplication - Started BlogApiApplication in 2.316 seconds (JVM running for 3.788)
