@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: blog-akboom
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog-api?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: chenaolin110
+
+server:
+  port: 8888
+mybatis:
+  mapper-locations: classpath:org/akboom/blogapi/mapper/*.xml
+  type-aliases-package: org.akboom.entity  # 注意：对应实体类的路径
+  configuration:
+    #org.apache.ibatis.logging.stdout.StdOutImpl 控制台打印sql语句方便调试sql语句执行错误
+    #org.apache.ibatis.logging.log4j2.Log4j2Impl:这个不在控制台打印查询结果,但是在log4j中打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    mapUnderscoreToCamelCase: true # 开启驼峰命名转换法
+
+# 指定log4j2作为日志记录
+logging:
+  config: classpath:log4j2-dev.xml
+  level:
+    #这个指定dao层，也就是mapper文件的所在包
+    org.akboom.blogapi.org.akboom.blogapi.mapper: DEBUG

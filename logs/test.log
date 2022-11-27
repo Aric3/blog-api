@@ -1,0 +1,8 @@
+16:35:46.954 [main] INFO  org.akboom.blogapi.BlogApiApplicationTests - Starting BlogApiApplicationTests using Java 1.8.0_341 on LAPTOP-HS8QAR35 with PID 27276 (started by 61450 in D:\CALCoding\Spring_Project\FinalProject\blog-api)
+16:35:46.968 [main] INFO  org.akboom.blogapi.BlogApiApplicationTests - The following 1 profile is active: "dev"
+16:35:47.702 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+16:35:49.312 [main] INFO  org.akboom.blogapi.BlogApiApplicationTests - Started BlogApiApplicationTests in 2.879 seconds (JVM running for 4.658)
+16:35:49.740 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+16:35:51.423 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+16:35:51.514 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+16:35:51.520 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

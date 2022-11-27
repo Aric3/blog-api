@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: blog-akboom
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  profiles:
+    active: dev
+server:
+  port: 8888
