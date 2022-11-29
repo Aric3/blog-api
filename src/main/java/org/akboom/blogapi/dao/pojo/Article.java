@@ -2,6 +2,11 @@ package org.akboom.blogapi.dao.pojo;
 
 import lombok.Data;
 
+/**
+ * @Classname Article
+ * @Description 文章数据类
+ * @Author AoLinChen
+ */
 @Data
 public class Article {
     /**
@@ -56,4 +61,3 @@ public class Article {
 
 
 }
-

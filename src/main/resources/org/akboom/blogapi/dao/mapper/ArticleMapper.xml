@@ -3,19 +3,70 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.akboom.blogapi.dao.mapper.ArticleMapper">
-
-    <select id="selectArticleByPageParam" resultType="Article">
-        select *
-        from article
-        order by weight desc, create_date desc
+    <resultMap id="ArticleVoMap" type="org.akboom.blogapi.vo.ArticleVo">
+        <result property="id" column="id"/>
+        <result javaType="String" column="create_date" property="createDate"
+                typeHandler="org.akboom.blogapi.handler.typeHandler.DateTimeTypeHandler"/>
+        <association property="author" column="author_id" select="selectAuthorName" fetchType="lazy"/>
+        <collection property="tags" column="id" ofType="Tag" select="selectTagsByArticleId" fetchType="lazy"/>
+    </resultMap>
+    <select id="selectArticleByPageParam" resultMap="ArticleVoMap">
+        SELECT *
+        FROM
+        article
+        ORDER BY
+        weight DESC,
+        create_date DESC
         <if test="offset != null and pageSize != null">
-        limit #{offset}, #{pageSize}
+            LIMIT #{offset}, #{pageSize}
         </if>
     </select>
 
-    <select id="selectArticleCount"  resultType="Article">
-        select
-        count(*)
-        from article
+    <select id="selectAuthorName" resultType="java.lang.String" parameterType="java.lang.Long">
+        SELECT nickname
+        FROM sys_user
+        WHERE id = #{author_id}
+    </select>
+
+    <select id="selectTagsByArticleId" parameterType="java.lang.Long" resultType="Tag">
+        SELECT *
+        FROM tag
+        WHERE id IN (SELECT tag_id
+                     FROM article_tag
+                     WHERE article_id = #{id})
+    </select>
+
+    <select id="selectArticleCount" resultType="Article">
+        SELECT count(*)
+        FROM article
+    </select>
+
+    <select id="selectHotArticle" resultType="java.util.HashMap">
+        SELECT id,
+               title
+        FROM article
+        ORDER BY view_counts DESC
+            LIMIT #{limit}
+    </select>
+
+    <select id="selectNewArticle" resultType="java.util.HashMap">
+        SELECT id,
+               title
+        FROM article
+        ORDER BY create_date DESC
+            LIMIT #{limit}
+    </select>
+
+    <select id="selectArchive" resultType="org.akboom.blogapi.dao.dos.Archive">
+        SELECT YEAR
+            (FROM_UNIXTIME( create_date / 1000 )) AS year,
+            MONTH
+            (FROM_UNIXTIME( create_date / 1000 )) AS month,
+            count(*) AS count
+        FROM
+            article
+        GROUP BY
+            YEAR,
+            MONTH
     </select>
 </mapper>

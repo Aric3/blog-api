@@ -1,0 +1,36 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.akboom.blogapi.dao.mapper.SysUserMapper">
+
+    <select id="getUserById" resultType="SysUser">
+        SELECT *
+        FROM system_user
+        WHERE id = #{id} LIMIT 1
+    </select>
+    <select id="getUserByAccountAndPasswd" resultType="SysUser">
+        SELECT *
+        FROM sys_user
+        WHERE account = #{account}
+          AND password = #{password} LIMIT 1
+    </select>
+    <select id="getUserSaltByAccount" resultType="java.lang.String">
+        SELECT salt
+        FROM sys_user
+        WHERE account = #{account} LIMIT 1
+    </select>
+
+    <select id="selectUserByAccount" resultType="SysUser">
+        SELECT *
+        FROM sys_user
+        WHERE account = #{account} LIMIT 1
+    </select>
+
+    <insert id="insertUser" parameterType="SysUser">
+        INSERT INTO sys_user
+        VALUES
+            (#{id},#{account},#{admin},#{avatar},#{createDate},#{deleted},#{email},#{lastLogin},#{mobilePhoneNumber},#{nickname},#{password},#{salt},#{status});
+    </insert>
+
+</mapper>

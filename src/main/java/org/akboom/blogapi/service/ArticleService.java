@@ -8,10 +8,21 @@ import org.springframework.stereotype.Service;
 public interface ArticleService {
 
     /**
-     * @description 分页查询文章列表
      * @param pageParam
      * @return Result
+     * @Description 分页查询文章列表
      */
 
-    public Result getArticleList(PageParam pageParam);
+    Result getArticleList(PageParam pageParam);
+
+    /**
+     * @param
+     * @return Result
+     * @Description 查询view_counts最多的limit个文章
+     */
+    Result getHotArticle();
+
+    Result getNewArticle();
+
+    Result getArchives();
 }

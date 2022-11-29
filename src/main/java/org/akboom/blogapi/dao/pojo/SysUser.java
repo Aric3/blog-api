@@ -1,11 +1,19 @@
 package org.akboom.blogapi.dao.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+/**
+ * @Classname SysUser
+ * @Description 系统用户数据对象
+ * @Author AoLinChen
+ */
+
 @Data
+@JsonIgnoreProperties(value = { "handler" })
 public class SysUser {
     /**
-     *
+     * id
      */
     private Long id;
 

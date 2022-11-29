@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * @Classname PageParam
- * @Description 分页数据类
+ * @Description 分页请求 数据对象
  * @Author AoLinChen
  */
 @Data

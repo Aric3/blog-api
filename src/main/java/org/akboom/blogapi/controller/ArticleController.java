@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Classname ArticleController
- * @Description 处理有关Article请求
+ * @Description 处理文章相关请求
  * @Author AoLinChen
  */
 @RestController
@@ -20,15 +20,46 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
     /**
-     * @description 分页获得文章列表
+     * @Description 获取文章列表
      * @param pageParam
-     * @return
+     * @return Result
      */
     @PostMapping
     public Result getArticleList(@RequestBody PageParam pageParam){
 
         return articleService.getArticleList(pageParam);
+    }
+    /**
+     * @Description 获取最热文章
+     * @param
+     * @return Result
+     */
+    @PostMapping("hot")
+    public Result getHotArticle(){
+
+        return articleService.getHotArticle();
+    }
+    /**
+     * @Description 获取最新文章
+     * @param
+     * @return Result
+     */
+
+    @PostMapping("new")
+    public Result getNewArticle(){
+        return articleService.getNewArticle();
+    }
+    /**
+     * @Description 获取文章归档信息
+     * @param
+     * @return Result
+     */
+
+    @PostMapping("listArchives")
+    public Result getArchives(){
+        return articleService.getArchives();
     }
 
 }
