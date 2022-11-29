@@ -1,6 +1,7 @@
 package org.akboom.blogapi.dao.mapper;
 
 import org.akboom.blogapi.dao.pojo.Tag;
+import org.akboom.blogapi.vo.TagVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,4 +23,6 @@ public interface TagMapper {
      * @return Tag的数组
      */
     List<Tag> selectTagsByIds(@Param("ids") List<Long> ids);
+
+    List<TagVo> selectTags();
 }

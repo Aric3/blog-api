@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.akboom.blogapi.dao.pojo.SysUser;
 import org.akboom.blogapi.service.LoginService;
+import org.akboom.blogapi.util.UserThreadLocal;
 import org.akboom.blogapi.vo.ErrorCode;
 import org.akboom.blogapi.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.getWriter().print(JSON.toJSONString(result));
             return false;
         }
-        //是登录状态，放行
+        //是登录状态，放行 将用户信息存放到ThreadLocal中
+        UserThreadLocal.put(sysUser);
         return true;
     }
 
@@ -67,6 +69,6 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
+        UserThreadLocal.remove();
     }
 }

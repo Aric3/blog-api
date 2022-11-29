@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * @Classname SysUser
- * @Description 系统用户数据对象
+ * @Description 系统用户持久化对象
  * @Author AoLinChen
  */
 

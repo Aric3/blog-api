@@ -4,6 +4,7 @@ import org.akboom.blogapi.dao.mapper.TagMapper;
 import org.akboom.blogapi.dao.pojo.Tag;
 import org.akboom.blogapi.service.TagService;
 import org.akboom.blogapi.vo.Result;
+import org.akboom.blogapi.vo.TagVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,12 @@ public class TagServiceImpl implements TagService {
         int limit = 6;
         List<Long> ids = tagMapper.selectHotTagIds(limit);
         List<Tag> tags = tagMapper.selectTagsByIds(ids);
+        return Result.success(tags);
+    }
+
+    @Override
+    public Result getTags() {
+       List<TagVo> tags = tagMapper.selectTags();
         return Result.success(tags);
     }
 }

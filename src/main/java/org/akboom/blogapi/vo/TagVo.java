@@ -1,5 +1,6 @@
 package org.akboom.blogapi.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 /**
@@ -8,6 +9,7 @@ import lombok.Data;
  * @Author AoLinChen
  */
 @Data
+@JsonIgnoreProperties(value = { "handler" })
 public class TagVo {
 
     private long id;

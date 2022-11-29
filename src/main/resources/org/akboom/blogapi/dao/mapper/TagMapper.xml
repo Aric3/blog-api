@@ -16,12 +16,16 @@
         select * from tag
         <where>
             <if test="ids != null">
-            and id in
-            <foreach collection="ids" index="index" item="item" open="("
-                     separator="," close=")">
-                #{item}
-            </foreach>
+                and id in
+                <foreach collection="ids" index="index" item="item" open="("
+                         separator="," close=")">
+                    #{item}
+                </foreach>
             </if>
         </where>
+    </select>
+    <select id="selectTags" resultType="org.akboom.blogapi.vo.TagVo">
+        SELECT id, tag_name
+        FROM tag
     </select>
 </mapper>

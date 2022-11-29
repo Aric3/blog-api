@@ -34,9 +34,9 @@ public class ArticleVo {
 
     private String author;
 
-    //private ArticleBodyVo body;
+    private ArticleBodyVo body;
 
     private List<Tag> tags;
 
-    //private List<CategoryVo> categories;
+    private List<CategoryVo> categories;
 }

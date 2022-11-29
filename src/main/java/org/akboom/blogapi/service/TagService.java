@@ -13,4 +13,6 @@ public interface TagService {
      * @return Result
      */
     Result getHotTags();
+
+    Result getTags();
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.akboom.blogapi.dao.mapper.CommentMapper">
+
+    <resultMap id="CommentVoMap" type="org.akboom.blogapi.vo.CommentVo">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="createDate" column="create_date"
+                typeHandler="org.akboom.blogapi.handler.typeHandler.DateTimeTypeHandler"/>
+        <result property="level" column="level"/>
+        <association property="author" column="author_id" select="selectUserVoByAuthorId" fetchType="lazy"/>
+        <association property="toUser" column="to_uid" select="selectUserVoByUserId" fetchType="lazy"/>
+        <collection property="children" ofType="org.akboom.blogapi.vo.CommentVo" column="id"
+                    select="selectCommentsByParentId" fetchType="lazy"/>
+    </resultMap>
+
+    <resultMap id="CommentVoMap2" type="org.akboom.blogapi.vo.CommentVo">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="createDate" column="create_date"
+                typeHandler="org.akboom.blogapi.handler.typeHandler.DateTimeTypeHandler"/>
+        <result property="level" column="level"/>
+        <association property="author" column="author_id" select="selectUserVoByAuthorId" fetchType="lazy"/>
+        <association property="toUser" column="to_uid" select="selectUserVoByUserId" fetchType="lazy"/>
+    </resultMap>
+    <insert id="insertComment">
+        INSERT INTO comments
+        VALUES (#{id}, #{content}, #{createDate}, #{articleId}, #{authorId}, #{parentId}, #{toUid}, #{level});
+    </insert>
+
+    <select id="selectCommentsByArticleId" resultMap="CommentVoMap">
+        SELECT *
+        FROM comments
+        WHERE article_id = #{articleId}
+    </select>
+
+    <select id="selectCommentsByParentId" resultMap="CommentVoMap2">
+        SELECT *
+        FROM comments
+        WHERE parent_id = #{id}
+          AND level > 1
+    </select>
+    <select id="selectUserVoByAuthorId" resultType="org.akboom.blogapi.vo.UserVo">
+        SELECT id,
+               nickname,
+               avatar
+        FROM sys_user
+        WHERE id = #{author_id} LIMIT 1
+    </select>
+
+    <select id="selectUserVoByUserId" resultType="org.akboom.blogapi.vo.UserVo">
+        SELECT id,
+               nickname,
+               avatar
+        FROM sys_user
+        WHERE id = #{to_uid} LIMIT 1
+    </select>
+
+</mapper>

@@ -2,8 +2,9 @@ package org.akboom.blogapi.service;
 
 
 import org.akboom.blogapi.vo.Result;
+import org.akboom.blogapi.vo.param.ArticleParam;
 import org.akboom.blogapi.vo.param.PageParam;
-import org.springframework.stereotype.Service;
+
 
 public interface ArticleService {
 
@@ -25,4 +26,8 @@ public interface ArticleService {
     Result getNewArticle();
 
     Result getArchives();
+
+    Result getArticle(Long id);
+
+    Result publishArticle(ArticleParam articleParam);
 }

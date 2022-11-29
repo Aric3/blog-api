@@ -3,6 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.akboom.blogapi.dao.mapper.ArticleMapper">
+
     <resultMap id="ArticleVoMap" type="org.akboom.blogapi.vo.ArticleVo">
         <result property="id" column="id"/>
         <result javaType="String" column="create_date" property="createDate"
@@ -10,6 +11,24 @@
         <association property="author" column="author_id" select="selectAuthorName" fetchType="lazy"/>
         <collection property="tags" column="id" ofType="Tag" select="selectTagsByArticleId" fetchType="lazy"/>
     </resultMap>
+
+    <resultMap id="ArticleVoMap2" type="org.akboom.blogapi.vo.ArticleVo">
+        <result property="id" column="id"/>
+        <result javaType="String" column="create_date" property="createDate"
+                typeHandler="org.akboom.blogapi.handler.typeHandler.DateTimeTypeHandler"/>
+        <association property="author" column="author_id" select="selectAuthorName" fetchType="lazy"/>
+        <association property="body" column="body_id" select="selectBodyContentById" fetchType="lazy"/>
+        <collection property="categories" column="category_id" ofType="org.akboom.blogapi.vo.CategoryVo"
+                    select="selectCategoryVoById" fetchType="lazy"/>
+        <collection property="tags" column="id" ofType="Tag" select="selectTagsByArticleId" fetchType="lazy"/>
+    </resultMap>
+    <insert id="insertArticle">
+        INSERT INTO article
+        VALUES (#{id}, #{commentCounts}, #{createDate}, #{summary}, #{title}, #{viewCounts}, #{weight}, #{authorId},
+                #{bodyId}, #{categoryId})
+    </insert>
+
+
     <select id="selectArticleByPageParam" resultMap="ArticleVoMap">
         SELECT *
         FROM
@@ -36,6 +55,20 @@
                      WHERE article_id = #{id})
     </select>
 
+    <select id="selectBodyContentById" parameterType="java.lang.Long" resultType="org.akboom.blogapi.vo.ArticleBodyVo">
+        SELECT content
+        FROM article_body
+        WHERE id = #{body_id}
+    </select>
+
+    <select id="selectCategoryVoById" parameterType="java.lang.Long" resultType="org.akboom.blogapi.vo.CategoryVo">
+        SELECT id,
+               avatar,
+               category_name
+        FROM category
+        WHERE id = #{category_id}
+    </select>
+
     <select id="selectArticleCount" resultType="Article">
         SELECT count(*)
         FROM article
@@ -57,16 +90,40 @@
             LIMIT #{limit}
     </select>
 
+    <select id="selectArticleById" resultMap="ArticleVoMap2">
+        SELECT *
+        FROM article
+        WHERE id = #{id}
+    </select>
+
+    <update id="updateViewCountsById">
+        UPDATE article
+        SET view_counts = #{viewCounts}
+        WHERE id = #{articleId}
+    </update>
+    <update id="updateBodyId">
+        UPDATE article
+        SET body_id = #{bodyId}
+        WHERE id = #{articleId}
+    </update>
+
+    <select id="selectViewCountsById" resultType="java.lang.Integer">
+        SELECT view_counts
+        FROM article
+        WHERE id = #{articleId}
+    </select>
     <select id="selectArchive" resultType="org.akboom.blogapi.dao.dos.Archive">
         SELECT YEAR
             (FROM_UNIXTIME( create_date / 1000 )) AS year,
             MONTH
             (FROM_UNIXTIME( create_date / 1000 )) AS month,
-            count(*) AS count
+            count (*) AS count
         FROM
             article
         GROUP BY
             YEAR,
             MONTH
     </select>
+
+
 </mapper>

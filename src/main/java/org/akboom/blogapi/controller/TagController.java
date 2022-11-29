@@ -1,5 +1,6 @@
 package org.akboom.blogapi.controller;
 
+import org.akboom.blogapi.aop.Logging;
 import org.akboom.blogapi.service.TagService;
 import org.akboom.blogapi.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +24,7 @@ public class TagController {
     public Result getHotTag() {
         return tagService.getHotTags();
     }
+    @GetMapping
+    @Logging(module = "Tag",operation = "getTags()")
+    public Result getTags(){return tagService.getTags();}
 }

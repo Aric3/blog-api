@@ -57,7 +57,7 @@ public class Article {
     /**
      * 类别id
      */
-    private Integer categoryId;
+    private Long categoryId;
 
 
 }

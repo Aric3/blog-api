@@ -1,0 +1,14 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.akboom.blogapi.dao.mapper.CategoryMapper">
+
+
+    <select id="selectCategories" resultType="org.akboom.blogapi.vo.CategoryVo">
+        SELECT id,
+               avatar,
+               category_name
+        FROM category
+    </select>
+</mapper>
