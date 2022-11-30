@@ -1,5 +1,6 @@
 package org.akboom.blogapi.controller;
 
+import org.akboom.blogapi.aop.Cache;
 import org.akboom.blogapi.aop.Logging;
 import org.akboom.blogapi.service.ArticleService;
 import org.akboom.blogapi.vo.Result;
@@ -27,6 +28,7 @@ public class ArticleController {
      */
     @PostMapping
     @Logging(module = "article",operation = "获取文章列表")
+    @Cache(expire = 1 * 60 * 1000,name = "getArticleList")
     public Result getArticleList(@RequestBody PageParam pageParam) {
 
         return articleService.getArticleList(pageParam);
