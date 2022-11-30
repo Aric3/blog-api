@@ -28,4 +28,13 @@
         SELECT id, tag_name
         FROM tag
     </select>
+    <select id="selectTagDetails" resultType="Tag">
+        SELECT *
+        FROM tag
+    </select>
+    <select id="selectTagDetailById" resultType="Tag">
+        SELECT *
+        FROM tag
+        WHERE id = #{id}
+    </select>
 </mapper>

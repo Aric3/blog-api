@@ -10,7 +10,10 @@ spring:
     host: localhost
     port: 6379
     password: chenaolin110
-
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 40MB
 server:
   port: 8888
   servlet:
@@ -30,3 +33,7 @@ logging:
   level:
     #这个指定dao层，也就是mapper文件的所在包
     org.akboom.blogapi.org.akboom.blogapi.dao.mapper: DEBUG
+qiniu:
+  accessKey: NmQiWY_iCfXGhesUsDj-MkJzy1RgpOriwFCmy8Au
+  secretKey: 6ibEXmtFUSRjeOmNit6yKnI4W0tV4Aey3qEsw843
+  testDomain: http://rm51mx6mn.hn-bkt.clouddn.com/

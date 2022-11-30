@@ -1,5 +1,6 @@
 package org.akboom.blogapi.dao.mapper;
 
+import org.akboom.blogapi.dao.pojo.Category;
 import org.akboom.blogapi.vo.CategoryVo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,4 +15,8 @@ import java.util.List;
 public interface CategoryMapper {
 
    List<CategoryVo> selectCategories();
+
+    List<Category> selectCategoryDetails();
+
+    Category selectCategoryDetailById(Long id);
 }

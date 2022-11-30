@@ -13,4 +13,8 @@ import java.util.List;
 public interface CategoryService {
 
     Result getCategories();
+
+    Result getCategoryDetails();
+
+    Result getCategoryDetailById(Long id);
 }

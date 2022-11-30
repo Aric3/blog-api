@@ -40,4 +40,16 @@ public class TagServiceImpl implements TagService {
        List<TagVo> tags = tagMapper.selectTags();
         return Result.success(tags);
     }
+
+    @Override
+    public Result getTagDetails() {
+        List<Tag> tags = tagMapper.selectTagDetails();
+        return Result.success(tags);
+    }
+
+    @Override
+    public Result getTagDetailById(Long id) {
+        Tag tag = tagMapper.selectTagDetailById(id);
+        return Result.success(tag);
+    }
 }

@@ -30,14 +30,32 @@
 
 
     <select id="selectArticleByPageParam" resultMap="ArticleVoMap">
-        SELECT *
+        SELECT
+        *
         FROM
         article
+        <where>
+            <if test="categoryId != null">
+                category_id = #{categoryId}
+            </if>
+            <if test="tagId != null">
+                AND id IN (
+                SELECT
+                article_id
+                FROM
+                article_tag
+                WHERE
+                tag_id =#{tagId})
+            </if>
+            <if test="year != null and year.length>0 and month != null and month.length>0">
+                and YEAR(FROM_UNIXTIME(create_date/1000)) = #{year} and MONTH(FROM_UNIXTIME(create_date/1000)) = #{month}
+            </if>
+        </where>
         ORDER BY
         weight DESC,
         create_date DESC
-        <if test="offset != null and pageSize != null">
-            LIMIT #{offset}, #{pageSize}
+        <if test="page != null and pageSize != null">
+            LIMIT #{page}, #{pageSize}
         </if>
     </select>
 
@@ -113,16 +131,15 @@
         WHERE id = #{articleId}
     </select>
     <select id="selectArchive" resultType="org.akboom.blogapi.dao.dos.Archive">
-        SELECT YEAR
-            (FROM_UNIXTIME( create_date / 1000 )) AS year,
-            MONTH
-            (FROM_UNIXTIME( create_date / 1000 )) AS month,
-            count (*) AS count
+        SELECT
+            YEAR(FROM_UNIXTIME( create_date / 1000)) AS year,
+            MONTH(FROM_UNIXTIME( create_date / 1000)) AS month,
+            count(*) AS count
         FROM
             article
         GROUP BY
-            YEAR,
-            MONTH
+            year,
+            month
     </select>
 
 

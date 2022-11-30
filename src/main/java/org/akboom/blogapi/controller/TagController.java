@@ -4,10 +4,7 @@ import org.akboom.blogapi.aop.Logging;
 import org.akboom.blogapi.service.TagService;
 import org.akboom.blogapi.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Classname TagController
@@ -25,6 +22,16 @@ public class TagController {
         return tagService.getHotTags();
     }
     @GetMapping
-    @Logging(module = "Tag",operation = "getTags()")
     public Result getTags(){return tagService.getTags();}
+
+    @GetMapping("detail")
+    public Result getAllTagDetails(){
+        return tagService.getTagDetails();
+    }
+
+    @GetMapping("detail/{id}")
+    public Result getTagDetailById(@PathVariable Long id){
+        return tagService.getTagDetailById(id);
+    }
+
 }

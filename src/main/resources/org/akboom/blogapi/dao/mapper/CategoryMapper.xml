@@ -11,4 +11,13 @@
                category_name
         FROM category
     </select>
+    <select id="selectCategoryDetails" resultType="Category">
+        SELECT *
+        FROM category
+    </select>
+    <select id="selectCategoryDetailById" resultType="Category">
+        SELECT *
+        FROM category
+        WHERE id = #{id} LIMIT 1
+    </select>
 </mapper>

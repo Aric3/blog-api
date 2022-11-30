@@ -45,8 +45,8 @@ public class ArticleServiceImpl implements ArticleService {
     public Result getArticleList(PageParam pageParam) {
 
         int offset = (pageParam.getPage() - 1) * pageParam.getPageSize();
-        int pageSize = pageParam.getPageSize();
-        List<ArticleVo> articleVoList = articleMapper.selectArticleByPageParam(offset, pageSize);
+        pageParam.setPage(offset);
+        List<ArticleVo> articleVoList = articleMapper.selectArticleByPageParam(pageParam);
         return Result.success(articleVoList);
     }
 

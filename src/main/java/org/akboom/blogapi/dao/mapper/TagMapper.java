@@ -25,4 +25,8 @@ public interface TagMapper {
     List<Tag> selectTagsByIds(@Param("ids") List<Long> ids);
 
     List<TagVo> selectTags();
+
+    List<Tag> selectTagDetails();
+
+    Tag selectTagDetailById(@Param("id") Long id);
 }

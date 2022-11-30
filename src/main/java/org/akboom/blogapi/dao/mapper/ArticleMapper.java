@@ -3,6 +3,7 @@ package org.akboom.blogapi.dao.mapper;
 import org.akboom.blogapi.dao.dos.Archive;
 import org.akboom.blogapi.dao.pojo.Article;
 import org.akboom.blogapi.vo.ArticleVo;
+import org.akboom.blogapi.vo.param.PageParam;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,13 +19,12 @@ import java.util.List;
 public interface ArticleMapper {
 
     /**
-     * @param offset
-     * @param pageSize
+     * @param pageParam
      * @return Articles
      * @description 分页查询文章列表
      */
 
-    List<ArticleVo> selectArticleByPageParam(@Param("offset") int offset, @Param("pageSize") int pageSize);
+    List<ArticleVo> selectArticleByPageParam(PageParam pageParam);
 
     /**
      * @param limit

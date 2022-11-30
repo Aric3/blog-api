@@ -1,5 +1,6 @@
 package org.akboom.blogapi.controller;
 
+import org.akboom.blogapi.aop.Logging;
 import org.akboom.blogapi.service.ArticleService;
 import org.akboom.blogapi.vo.Result;
 import org.akboom.blogapi.vo.param.ArticleParam;
@@ -25,6 +26,7 @@ public class ArticleController {
      * @Description 获取文章列表
      */
     @PostMapping
+    @Logging(module = "article",operation = "获取文章列表")
     public Result getArticleList(@RequestBody PageParam pageParam) {
 
         return articleService.getArticleList(pageParam);
