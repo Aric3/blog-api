@@ -21,4 +21,6 @@ public interface CommentMapper {
     UserVo selectUserVoByAuthorId(@Param("author_id")long id);
 
     int insertComment(Comment comment);
+
+    CommentVo selectCommentById(Long id);
 }

@@ -4,8 +4,9 @@ package org.akboom.blogapi.service;
 import org.akboom.blogapi.vo.Result;
 import org.akboom.blogapi.vo.param.ArticleParam;
 import org.akboom.blogapi.vo.param.PageParam;
+import org.springframework.transaction.annotation.Transactional;
 
-
+@Transactional
 public interface ArticleService {
 
     /**
@@ -30,4 +31,6 @@ public interface ArticleService {
     Result getArticle(Long id);
 
     Result publishArticle(ArticleParam articleParam);
+
+    Result searchArticlesByWord(String search);
 }

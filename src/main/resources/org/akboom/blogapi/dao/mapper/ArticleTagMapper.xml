@@ -9,4 +9,9 @@
         INSERT INTO article_tag(article_id, tag_id)
         VALUES (#{articleId}, #{tagId})
     </insert>
+    <delete id="deleteTagsByArticleId">
+        DELETE
+        FROM article_tag
+        WHERE article_id = #{articleId}
+    </delete>
 </mapper>

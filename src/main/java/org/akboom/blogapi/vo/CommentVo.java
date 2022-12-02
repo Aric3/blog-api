@@ -15,9 +15,12 @@ import java.util.List;
 @Data
 @JsonIgnoreProperties(value = { "handler" })
 public class CommentVo {
-    //防止前端 精度损失 把id转为string
-    // 分布式id 比较长，传到前端 会有精度损失，必须转为string类型 进行传输
+    /*
+    防止前端 精度损失 把id转为string
+    分布式id 比较长，传到前端 会有精度损失，必须转为string类型 进行传输
     @JsonSerialize(using = ToStringSerializer.class)
+    使用jackson统一处理
+    */
     private Long id;
 
     private UserVo author;

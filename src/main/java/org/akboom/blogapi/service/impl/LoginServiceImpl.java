@@ -108,6 +108,7 @@ public class LoginServiceImpl implements LoginService {
         ) {
             return Result.fail(ErrorCode.PARAMS_ERROR.getCode(), ErrorCode.PARAMS_ERROR.getMsg());
         }
+        /*用户已存在*/
         SysUser sysUser = sysUserService.getUserByAccount(account);
 
         if (sysUser != null) {
@@ -124,7 +125,7 @@ public class LoginServiceImpl implements LoginService {
         sysUser.setPassword(DigestUtils.md5Hex(password+salt)); //密码md5加密
         sysUser.setCreateDate(System.currentTimeMillis());
         sysUser.setLastLogin(System.currentTimeMillis());
-        sysUser.setAvatar("/static/img/logo.b3a48c0.png");
+        sysUser.setAvatar("/static/user/mao.svg");
         sysUser.setMobilePhoneNumber("");
         sysUser.setAdmin(false);  //1 为true
         sysUser.setDeleted(true); // 0 为false

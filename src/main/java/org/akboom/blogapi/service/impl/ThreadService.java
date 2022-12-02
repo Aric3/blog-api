@@ -15,11 +15,9 @@ public class ThreadService {
     @Async
     public void updateArticleViewCounts(ArticleMapper articleMapper, Long articleId, int viewCounts) {
         /*TODO:使用redis和mysql数据同步保证阅读数正常*/
-        Integer viewCountsOld = articleMapper.selectViewCountsById(articleId);
-        if (viewCountsOld == viewCounts) {
-            viewCounts += 1;
-            articleMapper.updateViewCountsById(viewCounts, articleId);
-        }
-
+        int viewCountsOld = viewCounts;
+        int viewCountsNew = viewCounts + 1;
+        //传入未自增前的viewCounts保证一致性
+        articleMapper.updateViewCountsById(viewCountsNew, viewCountsOld,articleId);
     }
 }

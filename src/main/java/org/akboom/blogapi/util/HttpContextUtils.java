@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Classname HttpContextUtils
- * @Description TODO
+ * @Description Http工具类
  * @Author AoLinChen
  */
 public class HttpContextUtils {

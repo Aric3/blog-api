@@ -2,13 +2,16 @@ package org.akboom.blogapi.dao.mapper;
 
 import org.akboom.blogapi.dao.dos.Archive;
 import org.akboom.blogapi.dao.pojo.Article;
+import org.akboom.blogapi.vo.ArticleSearchVo;
 import org.akboom.blogapi.vo.ArticleVo;
 import org.akboom.blogapi.vo.param.PageParam;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Classname ArticleMapper
@@ -40,11 +43,18 @@ public interface ArticleMapper {
 
     ArticleVo selectArticleById(@Param("id") long id);
 
-    int updateViewCountsById(@Param("viewCounts") int viewCounts, @Param("articleId") long articleId);
+    int updateViewCountsById(@Param("viewCountsNew") int viewCountsNew,@Param("viewCountsOld")int viewCountsOld, @Param("articleId") long articleId);
+
 
     Integer selectViewCountsById(@Param("articleId")long articleId);
 
     int insertArticle(Article article);
 
-    int updateBodyId(@Param("articleId")Long articleId,@Param("bodyId") Long bodyId);
+    int selectCommentCountsById(@Param("articleId")Long articleId);
+
+    int updateCommentCountsById(@Param("newCounts")int newCounts,@Param("oldCounts")int oldCounts,@Param("articleId") Long articleId);
+
+    List<ArticleSearchVo>selectArticlesByWord(@Param("search")String search);
+
+    int updateArticle(Article article);
 }

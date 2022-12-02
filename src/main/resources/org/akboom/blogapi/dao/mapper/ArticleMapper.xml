@@ -8,7 +8,7 @@
         <result property="id" column="id"/>
         <result javaType="String" column="create_date" property="createDate"
                 typeHandler="org.akboom.blogapi.handler.typeHandler.DateTimeTypeHandler"/>
-        <association property="author" column="author_id" select="selectAuthorName" fetchType="lazy"/>
+        <association property="author" column="author_id" select="selectAuthorById" fetchType="lazy"/>
         <collection property="tags" column="id" ofType="Tag" select="selectTagsByArticleId" fetchType="lazy"/>
     </resultMap>
 
@@ -16,16 +16,15 @@
         <result property="id" column="id"/>
         <result javaType="String" column="create_date" property="createDate"
                 typeHandler="org.akboom.blogapi.handler.typeHandler.DateTimeTypeHandler"/>
-        <association property="author" column="author_id" select="selectAuthorName" fetchType="lazy"/>
-        <association property="body" column="body_id" select="selectBodyContentById" fetchType="lazy"/>
-        <collection property="categories" column="category_id" ofType="org.akboom.blogapi.vo.CategoryVo"
-                    select="selectCategoryVoById" fetchType="lazy"/>
+        <association property="author" column="author_id" select="selectAuthorById" fetchType="lazy"/>
+        <association property="body" column="id" select="selectBodyContentByArticleId" fetchType="lazy"/>
+        <association property="category" column="category_id" select="selectCategoryVoById" fetchType="lazy"/>
         <collection property="tags" column="id" ofType="Tag" select="selectTagsByArticleId" fetchType="lazy"/>
     </resultMap>
     <insert id="insertArticle">
         INSERT INTO article
         VALUES (#{id}, #{commentCounts}, #{createDate}, #{summary}, #{title}, #{viewCounts}, #{weight}, #{authorId},
-                #{bodyId}, #{categoryId})
+                 #{categoryId})
     </insert>
 
 
@@ -59,8 +58,8 @@
         </if>
     </select>
 
-    <select id="selectAuthorName" resultType="java.lang.String" parameterType="java.lang.Long">
-        SELECT nickname
+    <select id="selectAuthorById" resultType="org.akboom.blogapi.vo.UserVo">
+        SELECT id,nickname,avatar
         FROM sys_user
         WHERE id = #{author_id}
     </select>
@@ -73,10 +72,10 @@
                      WHERE article_id = #{id})
     </select>
 
-    <select id="selectBodyContentById" parameterType="java.lang.Long" resultType="org.akboom.blogapi.vo.ArticleBodyVo">
+    <select id="selectBodyContentByArticleId" parameterType="java.lang.Long" resultType="org.akboom.blogapi.vo.ArticleBodyVo">
         SELECT content
         FROM article_body
-        WHERE id = #{body_id}
+        WHERE article_id = #{id}
     </select>
 
     <select id="selectCategoryVoById" parameterType="java.lang.Long" resultType="org.akboom.blogapi.vo.CategoryVo">
@@ -116,15 +115,28 @@
 
     <update id="updateViewCountsById">
         UPDATE article
-        SET view_counts = #{viewCounts}
+        SET view_counts = #{viewCountsNew}
         WHERE id = #{articleId}
-    </update>
-    <update id="updateBodyId">
-        UPDATE article
-        SET body_id = #{bodyId}
-        WHERE id = #{articleId}
+        AND view_counts = #{viewCountsOld}
     </update>
 
+    <update id="updateCommentCountsById">
+        UPDATE article
+        SET comment_counts = #{newCounts}
+        WHERE comment_counts = #{oldCounts}
+        AND id = #{articleId}
+    </update>
+    <update id="updateArticle">
+        UPDATE article
+        SET title = #{title},summary = #{summary},category_id = #{categoryId}
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectCommentCountsById" resultType="int">
+        SELECT comment_counts
+        FROM article
+        WHERE id = #{articleId}
+    </select>
     <select id="selectViewCountsById" resultType="java.lang.Integer">
         SELECT view_counts
         FROM article
@@ -140,6 +152,12 @@
         GROUP BY
             year,
             month
+    </select>
+    <select id="selectArticlesByWord" resultType="org.akboom.blogapi.vo.ArticleSearchVo">
+        SELECT id,title
+        FROM article
+        WHERE title like CONCAT('%',#{search},'%')
+        ORDER BY view_counts DESC
     </select>
 
 

@@ -6,8 +6,11 @@ import org.akboom.blogapi.service.ArticleService;
 import org.akboom.blogapi.vo.Result;
 import org.akboom.blogapi.vo.param.ArticleParam;
 import org.akboom.blogapi.vo.param.PageParam;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @Classname ArticleController
@@ -76,4 +79,13 @@ public class ArticleController {
         return articleService.publishArticle(articleParam);
     }
 
+    @PostMapping("search")
+    public Result searchArticlesByWord(@RequestBody Map<String,String>map){
+        String search = map.get("search");
+        if (!StringUtils.isBlank(search)) {
+            return articleService.searchArticlesByWord(search);
+        }
+        return Result.success(null);
+
+    }
 }

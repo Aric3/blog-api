@@ -4,15 +4,14 @@
 
 <mapper namespace="org.akboom.blogapi.dao.mapper.ArticleBodyMapper">
 
-
     <insert id="insert">
         INSERT INTO article_body (content, content_html, article_id)
         VALUES (#{content}, #{contentHtml}, #{articleId})
     </insert>
-
-    <select id="selectMaxId" resultType="java.lang.Long">
-        SELECT max(id)
-        from article_body;
-    </select>
+    <update id="updateBodyByArticleId">
+        UPDATE article_body
+        SET content = #{content},content_html = #{contentHtml}
+        WHERE article_id = #{articleId}
+    </update>
 
 </mapper>

@@ -1,6 +1,8 @@
 package org.akboom.blogapi.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import org.akboom.blogapi.dao.pojo.SysUser;
 import org.akboom.blogapi.dao.pojo.Tag;
@@ -15,6 +17,7 @@ import java.util.List;
 @Data
 @JsonIgnoreProperties(value = { "handler" })
 public class ArticleVo {
+
 
     private Long id;
 
@@ -32,11 +35,11 @@ public class ArticleVo {
      */
     private String createDate;
 
-    private String author;
+    private UserVo author;
 
     private ArticleBodyVo body;
 
     private List<Tag> tags;
 
-    private List<CategoryVo> categories;
+    private CategoryVo category;
 }

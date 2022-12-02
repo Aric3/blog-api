@@ -49,10 +49,6 @@ public class Article {
      */
     private Long authorId;
 
-    /**
-     * 内容id
-     */
-    private Long bodyId;
 
     /**
      * 类别id

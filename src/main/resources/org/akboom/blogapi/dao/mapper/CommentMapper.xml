@@ -34,7 +34,16 @@
         SELECT *
         FROM comments
         WHERE article_id = #{articleId}
+            AND level = 1
+        ORDER BY create_date
     </select>
+
+    <select id="selectCommentById" resultMap="CommentVoMap">
+        SELECT *
+        FROM comments
+        WHERE id = #{id} LIMIT 1
+    </select>
+
 
     <select id="selectCommentsByParentId" resultMap="CommentVoMap2">
         SELECT *
@@ -57,5 +66,6 @@
         FROM sys_user
         WHERE id = #{to_uid} LIMIT 1
     </select>
+
 
 </mapper>

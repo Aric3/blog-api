@@ -31,13 +31,16 @@ public class TagServiceImpl implements TagService {
 
         int limit = 6;
         List<Long> ids = tagMapper.selectHotTagIds(limit);
-        List<Tag> tags = tagMapper.selectTagsByIds(ids);
-        return Result.success(tags);
+        if (ids.size() != 0) {
+            List<Tag> tags = tagMapper.selectTagsByIds(ids);
+            return Result.success(tags);
+        }else return Result.success(null);
+
     }
 
     @Override
     public Result getTags() {
-       List<TagVo> tags = tagMapper.selectTags();
+        List<TagVo> tags = tagMapper.selectTags();
         return Result.success(tags);
     }
 

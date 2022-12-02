@@ -10,8 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ArticleBodyMapper {
-
     int insert(ArticleBody articleBody);
 
-    long selectMaxId();
+    int updateBodyByArticleId(ArticleBody articleBody);
 }
