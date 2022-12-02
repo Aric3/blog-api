@@ -1,9 +1,0 @@
-22:44:29.241 [main] INFO  org.akboom.blogapi.BlogApiApplication - Starting BlogApiApplication using Java 1.8.0_341 on LAPTOP-HS8QAR35 with PID 34004 (D:\CALCoding\Spring_Project\FinalProject\blog-api\target\classes started by 61450 in D:\CALCoding\Spring_Project\FinalProject\blog-api)
-22:44:29.241 [main] INFO  org.akboom.blogapi.BlogApiApplication - The following 1 profile is active: "dev"
-22:44:29.804 [main] DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
-22:44:30.180 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
-22:44:30.180 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-22:44:30.180 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.69]
-22:44:30.336 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-22:44:30.916 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
-22:44:30.947 [main] INFO  org.akboom.blogapi.BlogApiApplication - Started BlogApiApplication in 2.316 seconds (JVM running for 3.788)
