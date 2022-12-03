@@ -17,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,6 +33,11 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
+
+    private String[] avatars = {"Artboard.svg","daimaomao.svg","dajumao.svg","heimao.svg","heimaojingchang.svg",
+                                "jiafeimao.svg","jumao.svg","lanbaimao.svg","lanmao.svg","lihuamao.svg","mao.svg",
+                                "maotouying.svg","mianyinmao.svg","nainiumao.svg","PITAO-jumao.svg","sanhuamao.svg",
+                                "shizimao.svg","xiangsu_mao.svg"};
 
     /**
      * @param loginParam
@@ -125,7 +131,10 @@ public class LoginServiceImpl implements LoginService {
         sysUser.setPassword(DigestUtils.md5Hex(password+salt)); //密码md5加密
         sysUser.setCreateDate(System.currentTimeMillis());
         sysUser.setLastLogin(System.currentTimeMillis());
-        sysUser.setAvatar("/static/user/mao.svg");
+        /*随机给用户生成头像*/
+
+        int index = new Random().nextInt(avatars.length);
+        sysUser.setAvatar("/static/user/"+avatars[index]);
         sysUser.setMobilePhoneNumber("");
         sysUser.setAdmin(false);  //1 为true
         sysUser.setDeleted(true); // 0 为false

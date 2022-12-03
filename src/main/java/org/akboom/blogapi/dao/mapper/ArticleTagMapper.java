@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ArticleTagMapper {
-    public void insert(ArticleTag articleTag);
+    void insert(ArticleTag articleTag);
 
     int deleteTagsByArticleId(Long articleId);
 }

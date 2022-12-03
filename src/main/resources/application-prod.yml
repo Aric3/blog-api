@@ -1,6 +1,6 @@
 spring:
   application:
-    name: blog-akboom
+    name: BOOMCLUB
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://43.143.96.9:3306/blog-api?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
